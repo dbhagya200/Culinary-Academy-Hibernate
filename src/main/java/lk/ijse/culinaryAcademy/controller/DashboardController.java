@@ -2,15 +2,22 @@ package lk.ijse.culinaryAcademy.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class DashboardController {
 
     @FXML
     private Pane booksPane;
+    @FXML
+    private AnchorPane customroot;
 
     @FXML
     private Pane branchesPane;
@@ -25,19 +32,19 @@ public class DashboardController {
     private AnchorPane dashbord;
 
     @FXML
-    private ImageView imgBooks;
-
-    @FXML
     private ImageView imgBranches;
-
-    @FXML
-    private ImageView imgCatalog;
 
     @FXML
     private ImageView imgDashboard;
 
     @FXML
     private ImageView imgLogOut;
+
+    @FXML
+    private ImageView imgPrograms;
+
+    @FXML
+    private ImageView imgStudent;
 
     @FXML
     private ImageView imgTransparent;
@@ -91,23 +98,18 @@ public class DashboardController {
     private Pane usersPane;
 
     @FXML
-    void btnBooksOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
     void btnBranchesOnAction(ActionEvent event) {
 
     }
 
     @FXML
-    void btnCatalogOnAction(ActionEvent event) {
+    void btnDashboardOnAction(ActionEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/dashboard.fxml"));
+        Stage stage = (Stage) dashbord.getScene().getWindow();
 
-    }
-
-    @FXML
-    void btnDashboardOnAction(ActionEvent event) {
-
+        stage.setScene(new Scene(rootNode));
+        stage.setTitle("Dashboard");
+        stage.centerOnScreen();
     }
 
     @FXML
@@ -116,8 +118,28 @@ public class DashboardController {
     }
 
     @FXML
+    void btnProgramsOnAction(ActionEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/programs_manage.fxml"));
+        Stage stage = (Stage) customroot.getScene().getWindow();
+        customroot.getChildren().clear();
+        customroot.getChildren().add(rootNode);
+        stage.setTitle("Student Manage Form");
+        stage.centerOnScreen();
+    }
+
+    @FXML
     void btnSettingsOnAction(ActionEvent event) {
 
+    }
+
+    @FXML
+    void btnStudentOnAction(ActionEvent event) throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(getClass().getResource("/view/student_manage.fxml"));
+        Stage stage = (Stage) customroot.getScene().getWindow();
+        customroot.getChildren().clear();
+        customroot.getChildren().add(rootNode);
+        stage.setTitle("Student Manage Form");
+        stage.centerOnScreen();
     }
 
     @FXML

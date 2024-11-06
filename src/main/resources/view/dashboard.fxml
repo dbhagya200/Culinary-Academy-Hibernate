@@ -26,7 +26,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="imgCatalog" fitHeight="24.0" fitWidth="24.0" layoutX="41.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgPrograms" fitHeight="24.0" fitWidth="24.0" layoutX="41.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assests/icon/icons8-course-assign-60.png" />
                      </image>
@@ -54,7 +54,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="imgBooks" fitHeight="24.0" fitWidth="24.0" layoutX="41.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgStudent" fitHeight="24.0" fitWidth="24.0" layoutX="41.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../assests/icon/icons8-students-50.png" />
                      </image>
@@ -105,8 +105,8 @@
             </Pane>
             <JFXButton layoutX="-4.0" layoutY="562.0" minHeight="48.0" onAction="#btnLogOutOnAction" prefWidth="222.7" text=" " />
             <JFXButton layoutY="158.0" minHeight="48.0" onAction="#btnDashboardOnAction" prefWidth="222.7" text=" " />
-            <JFXButton layoutY="226.0" minHeight="48.0" onAction="#btnCatalogOnAction" prefWidth="222.7" text=" " />
-            <JFXButton layoutY="294.0" minHeight="48.0" onAction="#btnBooksOnAction" prefWidth="222.7" text=" " />
+            <JFXButton layoutY="226.0" minHeight="48.0" onAction="#btnProgramsOnAction" prefWidth="222.7" text=" " />
+            <JFXButton layoutY="294.0" minHeight="48.0" onAction="#btnStudentOnAction" prefWidth="222.7" text=" " />
             <JFXButton layoutY="362.0" minHeight="48.0" onAction="#btnUsersOnAction" prefWidth="222.7" text=" " />
             <JFXButton layoutY="430.0" minHeight="48.0" onAction="#btnBranchesOnAction" prefWidth="222.7" text=" " />
          </children>
@@ -143,14 +143,9 @@
             </ImageView>
          </children>
       </Pane>
-      <Pane fx:id="pagingPane" layoutX="223.0" layoutY="77.0" prefHeight="639.0" prefWidth="1162.0" visible="false" />
-      <ImageView fx:id="imgTransparent" fitHeight="888.0" fitWidth="1388.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         <image>
-            <Image url="@../../../../../BookWorm-Library-Management-System/src/main/resources/assests/img/transparentImage.png" />
-         </image>
-      </ImageView>
       <Pane fx:id="settingsPane" layoutX="1053.0" layoutY="78.0" prefHeight="154.0" prefWidth="307.0" visible="false" />
       <Pane fx:id="popUpLargePane" layoutX="372.0" layoutY="122.0" prefHeight="527.0" prefWidth="860.0" style="-fx-background-radius: 10;" visible="false" />
       <Pane fx:id="popUpPane" layoutX="455.0" layoutY="150.0" prefHeight="427.0" prefWidth="611.0" style="-fx-background-radius: 10;" visible="false" />
+      <AnchorPane fx:id="customroot" layoutX="222.0" layoutY="76.0" prefHeight="639.0" prefWidth="1162.0" />
    </children>
 </AnchorPane>
