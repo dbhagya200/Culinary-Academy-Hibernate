@@ -19,7 +19,7 @@ public class Programs implements Serializable {
     @Id
     @Column(name = "programID" )
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long programID;
+    private int programID;
 
     @Column(name = "programName", nullable = false)
     private String programName;

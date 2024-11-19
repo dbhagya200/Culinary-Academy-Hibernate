@@ -1,44 +1,61 @@
 package lk.ijse.culinaryAcademy.service.impl;
 
 import lk.ijse.culinaryAcademy.dto.Programsdto;
+import lk.ijse.culinaryAcademy.entity.Programs;
 import lk.ijse.culinaryAcademy.repository.Impl.ProgramsRepositoryImpl;
 import lk.ijse.culinaryAcademy.repository.ProgramsRepository;
+import lk.ijse.culinaryAcademy.repository.RepositoryFactory;
 import lk.ijse.culinaryAcademy.service.ProgramsService;
 import lk.ijse.culinaryAcademy.util.SessionFactoryConfig;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 public class ProgramsServiceImpl implements ProgramsService {
-    private static ProgramsService ProgramsService;
+
+    ProgramsRepository programsRepository = (ProgramsRepository) RepositoryFactory.getInstance()
+            .getRepository(RepositoryFactory.RepositoryTypes.PROGRAMS);
     private Session session;
 
-    private final ProgramsRepository programsRepository;
-
-    private ProgramsServiceImpl(){
-        programsRepository = ProgramsRepositoryImpl.getInstance();
-    }
-    public static ProgramsService getInstance(){
-        return null == ProgramsService
-                ? ProgramsService = new ProgramsServiceImpl()
-                : ProgramsService;
-    }
-
-    @Override
-    public long addPrograms(Programsdto programsdto) {
+    public void initializeSession() {
         session = SessionFactoryConfig.getInstance()
                 .getSession();
+    }
+
+
+    @Override
+    public boolean addPrograms(Programsdto programsdto) {
+        Programs programs = convertToEntity(programsdto);
+        initializeSession();
         Transaction transaction = session.beginTransaction();
         try {
-            programsRepository.setSession(session);
-            Long id = Long.valueOf(programsRepository.add(programsdto.toEntity())); // We pass it to the repository by converting it to an entity
+            ProgramsRepositoryImpl.setSession(session);
+            programsRepository.add(programs);
             transaction.commit();
-            session.close();
-            return id;
+            return true;
         } catch (Exception ex) {
             transaction.rollback();
-            session.close();
             ex.printStackTrace();
-            return -1L;
+            return false;
+        } finally {
+            session.close();
         }
     }
+
+    private Programs convertToEntity(Programsdto dto) {
+        Programs programs = new Programs();
+        programs.setProgramID(dto.getProgramID());
+        programs.setProgramName(dto.getProgramName());
+        programs.setProgramDuration(dto.getProgramDuration());
+        programs.setProgramFee(dto.getProgramFee());
+        return programs;
+    }
+
+    private Programsdto convertToDto(Programs programs) {
+       return new Programsdto(
+               programs.getProgramID(),
+               programs.getProgramName(),
+               programs.getProgramDuration(),
+               programs.getProgramFee());
+    }
 }
+

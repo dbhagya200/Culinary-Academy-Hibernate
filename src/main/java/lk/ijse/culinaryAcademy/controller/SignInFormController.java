@@ -2,12 +2,19 @@ package lk.ijse.culinaryAcademy.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import lk.ijse.culinaryAcademy.util.Navigations;
+
+import java.io.IOException;
 
 public class SignInFormController {
 
@@ -34,6 +41,8 @@ public class SignInFormController {
 
     @FXML
     private Label lblUsernameAlert;
+    @FXML
+    private AnchorPane rootNodeLog;
 
     @FXML
     private Pane signInPane;
@@ -49,7 +58,11 @@ public class SignInFormController {
 
     @FXML
     void btnSignInOnAction(ActionEvent event) {
-
+        try {
+            navigateToTheDashboard();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -64,7 +77,11 @@ public class SignInFormController {
 
     @FXML
     void btnSignUpOnAction(ActionEvent event) {
-
+        try {
+            navigateToTheSignUpForm();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -78,8 +95,8 @@ public class SignInFormController {
     }
 
     @FXML
-    void hyperForgotPasswordOnAction(ActionEvent event) {
-
+    void hyperForgotPasswordOnAction(ActionEvent event) throws IOException {
+        navigateToTheForgotForm();
     }
 
     @FXML
@@ -101,5 +118,36 @@ public class SignInFormController {
     void txtUsernameOnKeyPressed(KeyEvent event) {
 
     }
+    public void navigateToTheDashboard() throws IOException {
+        AnchorPane rootNode1 = FXMLLoader.load(this.getClass().getResource("/view/dashboard.fxml"));
+
+        Scene scene = new Scene(rootNode1);
+
+        Stage stage = (Stage)this.rootNodeLog.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Dashboard Form");
+    }
+    public void navigateToTheSignUpForm() throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/signUp_form.fxml"));
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = (Stage)this.rootNodeLog.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Sign Up Form");
+
+    }
+    public void navigateToTheForgotForm() throws IOException {
+        AnchorPane rootNode = FXMLLoader.load(this.getClass().getResource("/view/forgot_form.fxml"));
+        Scene scene = new Scene(rootNode);
+
+        Stage stage = (Stage)this.rootNodeLog.getScene().getWindow();
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.setTitle("Forgot Form");
+
+    }
+
 
 }

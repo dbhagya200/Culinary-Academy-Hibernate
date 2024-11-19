@@ -11,6 +11,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import lk.ijse.culinaryAcademy.dto.Programsdto;
+import lk.ijse.culinaryAcademy.service.ProgramsService;
+import lk.ijse.culinaryAcademy.service.ServiceFactory;
 
 import java.io.IOException;
 
@@ -61,8 +64,20 @@ public class AddProgramsController {
     @FXML
     private DatePicker txtdate;
 
+    ProgramsService programsService = (ProgramsService) ServiceFactory.getInstance().
+            getService(ServiceFactory.ServiceTypes.PROGRAMS);
     @FXML
     void btnAddOnAction(ActionEvent event) throws IOException {
+
+        Programsdto programsdto = new Programsdto();
+        programsdto.setProgramName(txtName.getText());
+        programsdto.setProgramDuration(txtDuration.getText());
+        programsdto.setProgramFee(txtProgramFee.getText());
+
+        if (programsService.addPrograms(programsdto)) {
+            Parent root = FXMLLoader.load(getClass().getResource("/lk/ijse/culinaryAcademy/view/programs_manage.fxml"));
+            addProgramroot.getChildren().setAll(root);
+        }
 
     }
 

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNodeForget" prefHeight="575.0" prefWidth="930.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.culinaryAcademy.controller.ForgotFormController">
+   <children>
+      <Pane layoutX="-0.39999999999997726" prefHeight="575.0" prefWidth="469.0" style="-fx-background-color: #7D0A0A; -fx-background-radius: 0 40 40 0;" />
+      <ImageView fitHeight="167.0" fitWidth="162.0" layoutX="626.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assests/img/logo_red.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="578.0" layoutY="207.0" text="Forgot Password" textFill="#7d0a0a">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+      <Label layoutX="622.0" layoutY="266.0" text="Please enter your username">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUsername" layoutX="573.0" layoutY="328.0" onAction="#txtUsernameOnAction" onKeyPressed="#txtUsernameOnKeyPressed" prefHeight="42.0" prefWidth="267.0" promptText="  Username" style="-fx-border-color: #727374; -fx-border-radius: 12px; -fx-background-color: white; -fx-background-radius: 12px;">
+         <font>
+            <Font size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="TEXT" />
+         </cursor>
+      </TextField>
+      <Pane fx:id="resetPasswordPane" layoutX="573.0" layoutY="391.0" prefHeight="42.0" prefWidth="267.0" style="-fx-background-color: #7D0A0A; -fx-background-radius: 15px;">
+         <children>
+            <Label fx:id="lblResetPassword" layoutX="73.0" layoutY="14.0" text="RESET PASSWORD" textFill="WHITE" />
+         </children>
+      </Pane>
+      <JFXButton layoutX="574.0" layoutY="390.0" onAction="#btnResetPasswordOnAction" onMouseEntered="#btnResetPasswordOnMouseEntered" onMouseExited="#btnResetPasswordOnMouseExited" prefHeight="42.0" prefWidth="267.0" style="-fx-background-radius: 15px;" text=" ">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <Label fx:id="lblUsernameAlert" layoutX="586.0" layoutY="371.0" textFill="RED">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="271.0" fitWidth="258.0" layoutX="123.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../../../../../Downloads/___2___2_-removebg-preview.png" />
+         </image>
+         <cursor>
+            <Cursor fx:constant="WAIT" />
+         </cursor>
+      </ImageView>
+      <Label layoutX="175.0" layoutY="252.0" prefHeight="83.0" prefWidth="139.0" text="Bistro" textFill="#f5efef">
+         <font>
+            <Font name="Nakula" size="46.0" />
+         </font>
+      </Label>
+      <Label layoutX="117.0" layoutY="323.0" prefHeight="45.0" prefWidth="280.0" text="Culinary Academy" textFill="#f5efef">
+         <font>
+            <Font name="FreeSerif" size="33.0" />
+         </font>
+      </Label>
+      <Pane fx:id="BackPane" layoutX="145.0" layoutY="396.0" prefHeight="42.0" prefWidth="185.0" style="-fx-background-color: #7D0A0A; -fx-background-radius: 15px; -fx-border-color: white; -fx-border-radius: 15px;">
+         <children>
+            <Label fx:id="lblSignIn" layoutX="79.0" layoutY="13.0" text="Back" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <JFXButton layoutX="145.0" layoutY="396.0" onAction="#btnBackOnAction" onMouseEntered="#btnSignUpOnMouseEntered" onMouseExited="#btnSignUpOnMouseExited" prefHeight="42.0" prefWidth="185.0" style="-fx-background-radius: 15px;" text=" ">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+   </children>
+</AnchorPane>

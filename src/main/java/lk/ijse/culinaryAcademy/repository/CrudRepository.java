@@ -2,6 +2,6 @@ package lk.ijse.culinaryAcademy.repository;
 
 import javax.persistence.Id;
 
-public interface CrudRepository<T, ID> extends SuperRepository {
-    ID add(T object);
+public interface CrudRepository<T> extends SuperRepository {
+    void add(T entity);
 }

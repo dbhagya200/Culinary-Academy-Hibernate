@@ -2,29 +2,23 @@ package lk.ijse.culinaryAcademy.repository.Impl;
 
 import lk.ijse.culinaryAcademy.entity.Programs;
 import lk.ijse.culinaryAcademy.repository.ProgramsRepository;
+import lombok.Setter;
 import org.hibernate.Session;
+
 
 public class ProgramsRepositoryImpl implements ProgramsRepository {
 
-    private Session session;
+    @Setter
+    private static Session session;
+
+
     @Override
-    public void setSession(Session session) {
-        this.session = session;
-    }
-
-
-    private static ProgramsRepositoryImpl programsRepositoryImpl;
-
-    private ProgramsRepositoryImpl(){}
-
-    public static ProgramsRepositoryImpl getInstance(){
-        return null == programsRepositoryImpl
-                ? programsRepositoryImpl = new ProgramsRepositoryImpl()
-                : programsRepositoryImpl;
+    public void add(Programs entity) {
+        session.save(entity);
     }
 
     @Override
-    public Long add(Programs programs) {
-        return (Long) session.save(programs);
+    public int getAllBookCount() {
+        return 0;
     }
 }
