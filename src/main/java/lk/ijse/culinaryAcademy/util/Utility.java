@@ -10,7 +10,7 @@ public class Utility {
     public static Properties getProperties() {
         Properties properties = new Properties();
         try {
-            InputStream input = Utility.class.getResourceAsStream("/files/hibernate.properties");
+            InputStream input = Utility.class.getResourceAsStream("/hibernate.properties");
             properties.load(input);
         } catch (IOException e) {
             System.out.println("Property File Not Found!");

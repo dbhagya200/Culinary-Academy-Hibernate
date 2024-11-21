@@ -1,9 +1,10 @@
 package lk.ijse.culinaryAcademy.entity;
 
-import lk.ijse.culinaryAcademy.dto.Programsdto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,8 +19,13 @@ public class Programs implements Serializable {
 
     @Id
     @Column(name = "programID" )
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int programID;
+//    @GeneratedValue(generator = "ProgramsIDGenerator")
+//    @GenericGenerator(
+//            name = "ProgramsIDGenerator",
+//            strategy = "lk.ijse.culinaryAcademy.util.ProgramsIDGenerator"
+//    )
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String programID;
 
     @Column(name = "programName", nullable = false)
     private String programName;
@@ -30,14 +36,7 @@ public class Programs implements Serializable {
     @Column(name = "programFee",nullable = false)
     private String programFee;
 
-//    public Programsdto toDto() {
-//        Programsdto programsdto = new Programsdto();
-//        programsdto.setProgramID(this.programID);
-//        programsdto.setProgramName(this.programName);
-//        programsdto.setProgramDuration(this.programDuration);
-//        programsdto.setProgramFee(this.programFee);
-//        return programsdto;
-//    }
+
 
 
 }

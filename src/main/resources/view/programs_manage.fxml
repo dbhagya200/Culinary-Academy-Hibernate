@@ -2,18 +2,17 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane fx:id="programsManageroot" prefHeight="639.0" prefWidth="1162.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.culinaryAcademy.controller.ProgramsManageController">
    <children>
@@ -51,11 +50,15 @@
                         </Label>
                      </children>
                   </HBox>
-                  <ScrollPane layoutX="21.0" layoutY="75.0" prefHeight="462.0" prefWidth="1099.0" style="-fx-background-color: white;">
-                     <content>
-                        <VBox fx:id="vProgramsManage" prefHeight="439.0" prefWidth="1070.0" style="-fx-background-color: white;" />
-                     </content>
-                  </ScrollPane>
+                  <TableView fx:id="tblPrograms" layoutX="19.0" layoutY="71.0" prefHeight="446.0" prefWidth="990.0" style="-fx-background-color: white;">
+                    <columns>
+                      <TableColumn fx:id="colId" prefWidth="135.33334350585938" />
+                      <TableColumn fx:id="colName" prefWidth="221.66665649414062" />
+                        <TableColumn fx:id="colDu" prefWidth="220.33334350585938" />
+                        <TableColumn fx:id="colFee" prefWidth="191.6666259765625" />
+                        <TableColumn prefWidth="298.0" />
+                    </columns>
+                  </TableView>
                </children>
             </Pane>
             <Pane fx:id="searchPane" layoutX="836.0" layoutY="23.0" prefHeight="46.0" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 12;">
@@ -70,7 +73,6 @@
                         <Font size="16.0" />
                      </font>
                   </TextField>
-                  <Pane layoutX="272.0" layoutY="148.0" prefHeight="436.0" prefWidth="23.0" style="-fx-background-color: white;" />
                </children>
             </Pane>
             <Text layoutX="19.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Programs Manage">

@@ -5,6 +5,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.culinaryAcademy.service.BOFactory;
+import lk.ijse.culinaryAcademy.service.custom.ProgramsBO;
+import lk.ijse.culinaryAcademy.dto.ProgramsDTO;
 
 public class AddProgramsBarController {
 
@@ -34,6 +37,21 @@ public class AddProgramsBarController {
 
     @FXML
     private AnchorPane programsManageBarroot;
+    private ProgramsDTO programsDTO;
+
+    public static String programID;
+
+    ProgramsBO programsBO = BOFactory.getBoFactory().getBO(BOFactory.BOType.PROGRAMSBO);
+
+    public void setData(String id) throws Exception {
+
+//        programsDTO = programsBO.getPrograms(id);
+        lblId.setText(programsDTO.getProgramID());
+        lblName.setText(programsDTO.getProgramName());
+        lblDuration.setText(programsDTO.getProgramDuration());
+        lblProgramFee.setText(programsDTO.getProgramFee());
+
+    }
 
     @FXML
     void imgDeleteOnMouseClicked(MouseEvent event) {

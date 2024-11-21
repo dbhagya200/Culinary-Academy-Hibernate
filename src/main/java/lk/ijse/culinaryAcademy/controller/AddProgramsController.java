@@ -4,16 +4,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import lk.ijse.culinaryAcademy.dto.Programsdto;
-import lk.ijse.culinaryAcademy.service.ProgramsService;
-import lk.ijse.culinaryAcademy.service.ServiceFactory;
+import lk.ijse.culinaryAcademy.dto.ProgramsDTO;
+import lk.ijse.culinaryAcademy.service.BOFactory;
+import lk.ijse.culinaryAcademy.service.custom.ProgramsBO;
+
 
 import java.io.IOException;
 
@@ -64,22 +63,53 @@ public class AddProgramsController {
     @FXML
     private DatePicker txtdate;
 
-    ProgramsService programsService = (ProgramsService) ServiceFactory.getInstance().
-            getService(ServiceFactory.ServiceTypes.PROGRAMS);
+    public static String id;
+
+
+
+   ProgramsBO programsBO = BOFactory.getBoFactory().getBO(BOFactory.BOType.PROGRAMSBO);
+   private static ProgramsManageController programsManageController = new ProgramsManageController();
     @FXML
-    void btnAddOnAction(ActionEvent event) throws IOException {
+    void btnAddOnAction(ActionEvent event) throws Exception {
 
-        Programsdto programsdto = new Programsdto();
-        programsdto.setProgramName(txtName.getText());
-        programsdto.setProgramDuration(txtDuration.getText());
-        programsdto.setProgramFee(txtProgramFee.getText());
+//        String name = txtName.getText();
+//        String duration = txtDuration.getText();
+//        String fee = txtProgramFee.getText();
+//        String date = txtdate.getValue().toString();
+//
+//        try {
+//            programsBO.addPrograms(new ProgramsDTO( name, duration, fee, date));
+////            loadAllPrograms();
+//            new Alert(Alert.AlertType.CONFIRMATION,"Student Added Successful !", ButtonType.OK).show();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            new Alert(Alert.AlertType.ERROR, "Student Added Not Successful!", ButtonType.OK).show();
+//        }
+//
+//        if (programsBO.addPrograms(new ProgramsDTO( name, duration, fee, date))) {
+//            Parent root = FXMLLoader.load(getClass().getResource("/lk/ijse/culinaryAcademy/view/programs_manage.fxml"));
+//            addProgramroot.getChildren().setAll(root);
+//        }
 
-        if (programsService.addPrograms(programsdto)) {
-            Parent root = FXMLLoader.load(getClass().getResource("/lk/ijse/culinaryAcademy/view/programs_manage.fxml"));
-            addProgramroot.getChildren().setAll(root);
+        String id = txtID.getText();
+        String name = txtName.getText();
+        String duration = txtDuration.getText();
+        String fee = txtProgramFee.getText();
+
+//        ProgramsDTO programsDTO = new ProgramsDTO(id,name, duration, fee);
+
+        try {
+            programsBO.savePrograms(new ProgramsDTO(id,name, duration, fee));
+            programsManageController.loadAllPrograms();
+            new Alert(Alert.AlertType.CONFIRMATION,"Programs Added Successful !", ButtonType.OK).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Programs Added Not Successful!", ButtonType.OK).show();
         }
 
     }
+
+
 
     @FXML
     void btnAddOnMouseEntered(MouseEvent event) {
